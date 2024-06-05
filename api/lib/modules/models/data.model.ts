@@ -5,3 +5,7 @@ export interface IData {
     deviceId: number;
     readingDate?: Date;
 }
+
+export type Query<T> = {
+    [key: string]: T;
+};

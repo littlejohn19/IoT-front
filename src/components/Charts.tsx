@@ -28,9 +28,9 @@ function Charts({data}: ChartsProps) {
                 width={1000}
                 height={300}
                 series={[
-                    {data: chartData.map((item:DataModel) => item.temperature !== undefined ? item.temperature : null), label: 'Temperature'},
-                    {data: chartData.map((item:DataModel) => item.pressure !== undefined ? item.pressure : null), label: 'Pressure'},
-                    {data: chartData.map((item:DataModel) => item.humidity !== undefined ? item.humidity : null), label: 'Humidity'},
+                    {data: chartData.map((item:DataModel) => item.pressure !== undefined ? item.pressure/10 : null), label: 'Pressure x10 [hPa]'},
+                    {data: chartData.map((item:DataModel) => item.humidity !== undefined ? item.humidity : null), label: 'Humidity [%]'},
+                    {data: chartData.map((item:DataModel) => item.temperature !== undefined ? item.temperature : null), label: 'Temperature [°C]'},
                 ]}
                 xAxis={[{scaleType: 'point', data: xLabels}]}
             />}

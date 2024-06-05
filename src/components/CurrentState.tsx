@@ -14,6 +14,7 @@ function CurrentState({data}: CurrentStateProps) {
             <Tile
                 id={id}
                 data={data}
+                details={false}
                 hasData={Boolean(data?.readingDate)}>
             </Tile>
         </>

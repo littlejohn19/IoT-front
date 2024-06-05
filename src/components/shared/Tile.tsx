@@ -13,17 +13,18 @@ interface TileProps {
     data: DataModel | null;
     id?: string | number,
     hasData?: boolean,
+    details?: boolean,
     active?: boolean
 }
 
-function Tile({id, active = false, hasData, data}: TileProps) {
+function Tile({id, hasData, data, active = false, details = true,}: TileProps) {
 
     return (
         <Card className={`tile-device-inside ${active ? 'active' : ''}`} sx={{minWidth: 275}}>
-            <CardContent style={{height: '200px'}}>
+            <CardContent style={{minHeight: '200px'}}>
                 <Typography style={{borderBottom: '5px solid #fff', paddingBottom: '10px'}} variant="h5"
                             component="div">
-                    Device {id}
+                    Device No. {id}
                 </Typography>
                 {!hasData && <Typography variant="h6"
                                          component="div">
@@ -32,21 +33,21 @@ function Tile({id, active = false, hasData, data}: TileProps) {
                 {hasData && <Typography style={{paddingTop: '10px'}} component="div">
                     <Typography variant="h6" component="div">
                         <DeviceThermostatIcon></DeviceThermostatIcon>
-                        {data?.temperature} <span>&deg;C</span>
+                        <span className="value">{data?.temperature}</span> <span>&deg;C</span>
                     </Typography>
                     <Typography variant="h6" component="div">
                         <CloudUploadIcon></CloudUploadIcon>
-                        {data?.pressure} hPa
+                        <span className="value">{data?.pressure}</span> hPa
                     </Typography>
                     <Typography variant="h6" component="div">
                         <OpacityIcon></OpacityIcon>
-                        {data?.humidity}%
+                        <span className="value">{data?.humidity}</span>%
                     </Typography>
                 </Typography>}
             </CardContent>
-            <CardActions>
+            {details && <CardActions>
                 <Button size="small" component={Link} to={`/device/${id}`}>Details</Button>
-            </CardActions>
+            </CardActions>}
         </Card>
 
     );

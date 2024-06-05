@@ -28,8 +28,10 @@ const ApplicationErrors = {
     },
     errorHandler: function (error: ApplicationException, response: any): void {
         if (error instanceof ApplicationException) {
+            // @ts-ignore
             response.status(parseInt(error.error)).send(error.message || error.error.message);
         } else {
+            // @ts-ignore
             console.error(error && error.stack || error);
             response.sendStatus(500);
         }
