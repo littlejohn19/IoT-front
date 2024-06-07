@@ -1,6 +1,6 @@
 const serverConfig = {
-    localServerUrl: 'http://localhost:42224/api/',
-    productionServerUrl: 'https://at.usermd.net/api/',
+    localServerUrl: 'http://localhost:3100/api/',
+    productionServerUrl: '',
 };
 
 export default {
